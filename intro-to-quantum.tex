@@ -1,0 +1,481 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Structured General Purpose Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.mus
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+%\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage{graphicx} % Required to insert images
+\usepackage{float}
+\usepackage{listings}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage[colorlinks=true, pdfborder={0 0 0}, urlcolor=blue, linkcolor=black]{hyperref}
+\usepackage{natbib}
+\usepackage{tikz}
+\usepackage{qcircuit}
+
+\usepackage{algorithm}% http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{algorithmicx}
+
+\graphicspath{ {img/} }
+
+\include{macros}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in 
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+%\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center header
+\rhead{\hmwkClass: \hmwkTitle} % Top center header
+%\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continues in next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continuation)}{#1 continues in next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continuation)}{#1 continues in next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][\arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argumen
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+   
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Notes on an Introduction to Quantum Computing for Computer Scientists} % Assignment title
+\newcommand{\hmwkDueDate}{May 2024} % Due date
+\newcommand{\hmwkClass}{} % Course/class
+\newcommand{\hmwkClassFull}{} % Course/class
+\newcommand{\hmwkClassTime}{} % Class/lecture time
+\newcommand{\hmwkClassInstructor}{} % Teacher/lecturer
+\newcommand{\hmwkAuthorName}{William Bombardelli} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+%\vspace{2in}
+\Large\textmd{\textbf{\hmwkClassFull}}\\
+\normalsize{\textbf{\hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{\hmwkDueDate}\\
+%\vspace{0.1in}
+\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+%\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%\maketitle
+{\centering
+\Large\textmd{\textbf{\hmwkClassFull}}\\
+\normalsize{\textbf{\hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{\hmwkDueDate}\\
+%\vspace{0.1in}
+\large\textbf{\hmwkAuthorName}
+%\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}\\
+
+}
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+%\newpage
+%\tableofcontents
+%\newpage
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}[Introduction to Quantum Computing for Computer Scientists]
+	The notes below might serve as an introductory text to quantum computing for computer scientist or IT professionals, in general. More than anything, these notes helped the author understanding the basics of the topic and do not have much care with form rigidity or completeness.
+	
+	\begin{section}{Introduction}
+		In classical computing, we have a \textit{bit}, which can be either $0$ or $1$. A system of two bits, can be in either one of four possible states, $00, 01, 10, 11$.
+		
+		In quantum computing, we have a \textit{qbit}, which can be either, $\ket{0}$, $\ket1$, or something between $\ket0$ and $\ket1$.
+		
+		More precisely, 
+		\[
+			\ket0 \text{ is a vector} \vc{1}{0} \text{ and } \ket1 \text{ is a vector} \vc{0}{1}
+			\text{and a qbit is, in general,} \vc{v_0}{v_1} \text{with } v_0^2 + v_1^2 = 1
+		\]
+		
+		Think of the components $v_0$ and $v_1$ as the values that give the probability of that qbit being actually a 0 or a 1 in the classical world, respectively. These values are called amplitudes and are complex numbers. However, we will use only its real parts here.
+		
+		Other famous qbits are 
+		\[
+			\ket{+} = \vc{\oort}{\oort} $\text{ and } $\ket{-} = \vc{\oort}{-\oort}
+		\] which, when measured, have both 50\% chance of being either 0 or 1 when measured.
+		
+		A system with two qbits can be in either one of more than just four possible states 
+		\[
+			\ket{00} = \vcc{1}{0}{0}{0}
+			\hspace{10pt}
+			\ket{01} = \vcc{0}{1}{0}{0}
+			\hspace{10pt}
+			\ket{10} = \vcc{0}{0}{1}{0}
+			\hspace{10pt}
+			\ket{11} = \vcc{0}{0}{0}{1}
+		\]
+		it can be in any superstate
+		\[
+			\vcc{v_{00}}{v_{01}}{v_{10}}{v_{11}} \text{ with } v_{00}^2 + v_{01}^2 + v_{10}^2 + v_{11}^2 = 1
+			\text{ . For example, }
+			\vcc{1/2}{1/2}{1/2}{1/2}
+		\]
+		
+		This already gives us some whisper of the power of qbits. They can encode more states than classical bits. Beware however, that they don't offer exponential growth of states nor is a qbit in more than one state at a time. It is always in a very precise state. In other words, a quantum computer is not a non-deterministic machine.
+		
+		Finally, notice that $\ket{00}$ is the tensor product of $\ket{0}$ and $\ket{0}$. That is,
+		\[
+			\vcc{1}{0}{0}{0} = \vc{1}{0} \otimes \vc{1}{0}
+			\text{ and, in general, }
+			\vcc{v_{00}}{v_{01}}{v_{10}}{v_{11}} = \vcc{w_0*u_0}{w_0*u_1}{w_1*u_0}{w_1*u_1} = \vc{w_0}{w_1} \otimes \vc{u_0}{u_1}
+		\]
+		For example,
+		\[
+			\ket{++} = \vc{\oort}{\oort} \otimes \vc{\oort}{\oort} = 
+			\vcc{1/2}{1/2}{1/2}{1/2} \text{ and } \ket{--} = \vc{\oort}{-\oort} \otimes \vc{\oort}{-\oort} = 
+			\vcc{1/2}{-1/2}{-1/2}{1/2}
+		\]
+		
+		This will give us the tools we need for the next sections.
+	\end{section}
+	
+		
+	\begin{section}{Operations}
+		To compute with one qbit, let's consider the following unary operations.
+		
+		\paragraph{Identity. } The identity operation is represented by $I$ and does not do anything with the input. That is $\op{I} \ket{0} = \ket{0}$ and $\op{I} \ket{1} = \ket{1}$. In general, it works as a matrix multiplication over the qbit as follows.
+		\[
+			\op{I} \ket{x} = \oper{1 & 0}{0 & 1} \vc{x_0}{x_1} = \ket{x}
+		\]
+	
+		\paragraph{Flip. } The flip operation is represented by $X$ and flips the components of the input. That is $\op{X} \ket{0} = \ket{1}$ and $\op{X} \ket{1} = \ket{0}$. In general, it works as a matrix multiplication over the qbit as follows.
+		\[
+			\op{X} \ket{x} = \oper{0 & 1}{1 & 0} \vc{x_0}{x_1} = \vc{x_1}{x_0}
+		\]
+	
+		\paragraph{Hadamard. } The hadamard operation is represented by $H$ and puts the input in an intermediary superstate. That is $\op{H} \ket{0} = \ket{+}$ and $\op{H} \ket{1} = \ket{-}$. In general, it works as a matrix multiplication over the qbit as follows.
+		\[
+			\op{H} \ket{x} = \oper{\oort & \oort}{\oort & -\oort} \vc{x_0}{x_1}
+		\]
+		
+		To compute with two qbits, let's consider the following operation.
+		
+		\paragraph{CNOT. } The CNOT operation is represented by $C$ and works as a controlled not on the input. That is, in $\op{C} \ket{xy}$, $x$ controls whether $y$ is negated or not. If $x$ is 1, it will negate $y$. Example: $\op{C} \ket{00} = \ket{00}$, $\op{C} \ket{10} = \ket{11}$.
+		In general, its matrix is
+		\[
+			\op{C} = \begin{pmatrix}
+				1 & 0 & 0 & 0\\
+				0 & 1 & 0 & 0\\
+				0 & 0 & 0 & 1\\
+				0 & 0 & 1 & 0\\
+			\end{pmatrix}
+		\]
+		
+		\begin{remark}
+			Notice that applying $C$ to superstates has some weird results.
+			\[
+				\op{C} \ket{++} = \begin{pmatrix}
+				1 & 0 & 0 & 0\\
+				0 & 1 & 0 & 0\\
+				0 & 0 & 0 & 1\\
+				0 & 0 & 1 & 0\\
+				\end{pmatrix} \vcc{1/2}{1/2}{1/2}{1/2}
+				= 
+				\vcc{1/2}{1/2}{1/2}{1/2}
+				= \ket{++}
+			\]
+		\end{remark}
+	\end{section}
+
+	\begin{section}{Quantum Circuits}
+		When it comes to writing algorithms, alternatively to the matrix calculations shown above, we can use circuit diagrams. Each operation presented in the previous section has a quantum circuit notation.
+		
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{c | c | c | c}
+				Identity & Flip & Hadamard & CNOT \\
+				\;\;\;\;\;\;\;\;
+				$
+					\Qcircuit @C=1.4em @R=1.2em {
+						\lstick{\ket{x}} & \gate{I} & \rstick{\ket{x}} \qw
+					}
+				$
+				\;\;\;\;\;\;\;\;
+				&
+				\;\;\;\;\;\;\;\;
+				$
+				\Qcircuit @C=1.4em @R=1.2em {
+					\lstick{\ket{x}} & \gate{X} &  \rstick{\op{X}\ket{x}}  \qw
+				}
+				$
+				\;\;\;\;\;\;\;\;\;\;\;\;
+				&
+				\;\;\;\;\;\;\;\;
+				$
+					\Qcircuit @C=1.4em @R=1.2em {
+						\lstick{\ket{x}} & \gate{H} & \rstick{\op{H}\ket{x}} \qw
+					}
+				$
+				\;\;\;\;\;\;\;\;\;\;\;\;
+				&
+				\;\;\;\;\;\;\;\;
+				$
+					\Qcircuit @C=1.4em @R=1.2em {
+						\lstick{\ket{x}}	& \ctrl{1} 	& \rstick{\ket{x}} \qw \\
+						\lstick{\ket{y}}	& \targ 	& \rstick{\ket{x \oplus y}} \qw \\
+					}
+				$
+				\;\;\;\;\;\;\;\;
+			\end{tabular}
+			\caption{Quantum circuit notation of the four basic operations}
+		\end{table}
+	\end{section}
+
+	\begin{section}{Hello World}
+		In this section, we shall explore the hello world of quantum computing. We will write Deutsch's algorithm, one of the first quantum algorithms that outperforms its classical sibling. This algorithm solves the following problem.
+		
+		\begin{quotation}
+			Given a function $f:\{0,1\} \to \{0,1\}$, tell whether $f$ is constant or variable.
+		\end{quotation}
+	
+		$f$ is constant if, and only if, $f(0) = f(1)$. Otherwise, $f$ is variable, that is, $f(0) \ne f(1)$.
+	\end{section}
+		
+	\begin{section}{The Classical Algorithm}
+		The classical algorithm for this problem is
+		\begin{quotation}
+			if $f(0) \oplus f(1) = 0$, then $f$ is constant. Else $f$ is variable.
+		\end{quotation}
+	
+		\begin{proof}
+			$f$ can take one of only four possible forms.
+			\begin{table}[h]
+				\centering
+				\begin{tabular}{l l l}
+					remark		& name 		& form \\
+					\hline
+					constant	& $set0$ 		& $f(x) = 0$ \\
+					constant	& $set1$ 		& $f(x) = 1$ \\
+					variable	& $id$ 			& $f(x) = x$ \\
+					variable	& $negation$	& $f(x) = \lnot x$ \\
+				\end{tabular}
+				\caption{All four possible forms of $f:\{0,1\} \to \{0,1\}$}
+				\label{tab:fforms}
+			\end{table}
+		
+			So, in the case of $f$ being constant, $f$ is either $set0$ or $set1$, thus, either we have $f(0) \oplus f(1) = 0 \oplus 0 = 0$ or $f(0) \oplus f(1) = 1 \oplus 1 = 0$, which proves the positive cases.
+			
+			Shall $f$ be variable, $f$ is either $id$ or $negation$, thus, either we have $f(0) \oplus f(1) = 0 \oplus 1 = 1$ or $f(0) \oplus f(1) = 1 \oplus 0 = 1$, which proves all the remaining cases.
+		\end{proof}
+		
+		Notice that, it takes this algorithm two calls to $f$ to give the solution. Using quantum computation, we can build an algorithm that calls $f$ only once to decide the solution.
+	\end{section}
+
+	\begin{section}{The Quantum Algorithm: Deutsch's Algorithm}
+		In order to involve $f$ in a quantum algorithm, we will explore the quantum circuit encoding of all its four possible forms, as shown in Table \ref{tab:fforms}.
+		
+		Creating circuits for $id$ and $negation$ would be fairly straightforward, however, $set0$ and $set1$ are not reversible, but \textit{quantum computation needs to be reversible}. So we need to encode them in a reversible manner. To do this, we create an $f': \{0,1\}^2 \to \{0,1\}^2$ such that $f'(0,x) = (f(x),x)$. In other words, we fix the first parameter as zero and record the input $x$ in the second component of the result. This makes $set0$ and $set1$ reversible.
+		
+		The four possible forms of $f'$ are coded as shown below.
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{c | c | c | c}
+				$set0$ & $set1$ & $id$ & $negation$ \\
+				\;\;\;\;\;\;\;\;
+				$
+					\Qcircuit @C=1.4em @R=1.2em {
+						\lstick{\ket{0}} & \qw & \rstick{\ket{f(x)}} \qw \\
+						\lstick{\ket{x}} & \qw & \rstick{\ket{x}} \qw \\
+					}
+				$
+				\;\;\;\;\;\;\;\;\;\;\;\;
+				&
+				\;\;\;\;\;\;\;\;
+				$
+					\Qcircuit @C=1.4em @R=1.2em {
+						\lstick{\ket{0}} & \gate{X} & \rstick{\ket{f(x)}} \qw \\
+						\lstick{\ket{x}} & \qw & \rstick{\ket{x}} \qw \\
+					}
+				$
+				\;\;\;\;\;\;\;\;\;\;\;\;
+				&
+				\;\;\;\;\;\;\;\;
+				$
+					\Qcircuit @C=1.4em @R=1.2em {
+						\lstick{\ket{0}} & \targ	& \rstick{\ket{f(x)}} \qw \\
+						\lstick{\ket{x}} & \ctrl{-1}& \rstick{\ket{x}} \qw \\
+					}
+				$
+				\;\;\;\;\;\;\;\;\;\;\;\;
+				&
+				\;\;\;\;\;\;\;\;
+				$
+				\Qcircuit @C=1.4em @R=1.2em {
+					\lstick{\ket{0}} & \targ	& \gate{X} 	& \rstick{\ket{f(x)}} \qw \\
+					\lstick{\ket{x}} & \ctrl{-1}& \qw		& \rstick{\ket{x}} \qw \\
+				}
+				$
+				\;\;\;\;\;\;\;\;
+			\end{tabular}
+			\caption{Quantum circuits for the four forms of $f'$}
+			\label{tab:fcircuits}
+		\end{table}
+		
+		The quantum circuit that solves our hello world problem is presented below. Mind that, as stated, we do not know $f$ beforehand, so we have its quantum form $f'$ as a blackbox in our circuit. We hard-code the two inputs as $\ket{1}$ and care only about the first output $p$, which measures $1$ if, and only if, $f$ is constant, otherwise it measures $0$ (and $f$ is variable).
+		\[
+			\Qcircuit @C=1em @R=1em {
+				\lstick{\ket{1}} & \gate{H}	& \multigate{1}{f'}	& \gate{H} & \meter & \rstick{p} \qw \\
+				\lstick{\ket{1}} & \gate{H}	& \ghost{f'}		& \qw & &\\
+			}
+		\]
+		\begin{proof}
+			In the first part of the circuit, we only do the pre-processing of putting the input $\ket{11}$ in the superstate $\ket{--}$, since $\op{H}\ket{1} = \ket{-}$. So, now we have,
+			\[
+				\Qcircuit @C=1.5em @R=1em {
+					\lstick{\ket{-}} & \multigate{1}{f'}& \ustick{\ket{\psi}} \qw & \gate{H} & \ustick{\op{H}\ket{\psi}} \qw &\meter & \rstick{p} \qw \\
+					\lstick{\ket{-}} & \ghost{f'}		& \qw  & & &\\
+				}
+			\]
+			Hence, it remains to show that $\op{H}\ket{\psi}$ measures 1 when $f'$ is $set0$ or $set1$, and 0 when $f'$ is $id$ or $negation$. These four cases are presented below.
+			\begin{enumerate}
+				\item[$set0$] When $f'$ is $set0$, see Table \ref{tab:fcircuits}, $f'(\ket{--}) = \ket{--}$, thus $\psi = \ket{-}$ and $\op{H}\ket{\psi} = \op{H}\ket{-} = \ket{1}$. In which case $p$ is 1.
+				
+				\item[$set1$] When $f'$ is $set1$, see Table \ref{tab:fcircuits},
+				\[
+					f'(\ket{--}) = \vc{-\oort}{\oort} \otimes \ket{-} \text{, thus } \psi = \vc{-\oort}{\oort}
+				\]
+				\[
+					\text{and then }\op{H}\ket{\psi} = \op{H}\ket{\vc{-\oort}{\oort}} = \oper{\oort & \oort}{\oort & -\oort} \vc{-\oort}{\oort} = \vc{0}{-1} \text{ which measures 1}
+				\]
+				
+				\item[$id$] When $f'$ is $id$, see Table \ref{tab:fcircuits},
+				\[
+					f'(\ket{--}) = \op{C}\ket{--} = \begin{pmatrix}
+					1 & 0 & 0 & 0\\
+					0 & 1 & 0 & 0\\
+					0 & 0 & 0 & 1\\
+					0 & 0 & 1 & 0\\
+					\end{pmatrix} \vcc{1/2}{-1/2}{-1/2}{1/2}
+					= \vcc{1/2}{-1/2}{1/2}{-1/2} = \vc{\oort}{\oort} \otimes \vc{\oort}{-\oort} = \ket{+-}
+				\]
+				\[
+					\text{and then }\op{H}\ket{\psi} = \op{H}\ket{+} = \ket{0} \text{ which measures 0}
+				\]
+				
+				\item[$negation$] When $f'$ is $negation$, see Table \ref{tab:fcircuits},
+				\[
+					f'(\ket{--}) = (X \otimes I)\op{C}\ket{--} = (\op{X} \otimes \op{I})\ket{+-} = (\op{X}\ket{+} \otimes \op{I}\ket{-})
+				\]
+				\[
+					\text{as we are interested only in the first qbit, that is }
+					\op{X}\ket{+} = \oper{0 & 1}{1 & 0} \vc{\oort}{\oort} = \ket{+}
+				\]
+				\[
+					\text{then we have }\op{H}\ket{\psi} = \op{H}\ket{+} = \ket{0} \text{ which measures 0}
+				\]
+			\end{enumerate}
+			This shows all the cases and therefore that the circuit solved Deutsch's problem.
+			Note that we made the arbitrary choice to hard-code $\ket{0}$ as the first input of the quantum circuits for $f'$. The algorithm above would work similarly if we arbitrated $\ket{1}$ as the first input for $f'$.
+		\end{proof}
+		
+		Perceive that we only call $f$ once (via $f'$). As much as this sounds like only a little gain, in the generalized version of this problem, the Deutsh-Josza problem, where $f: \{0,1\}^n \to \{0,1\}^n$, we can construct a similar quantum circuit that calls $f$ only once, whereas its classical dual requires an exponential number of calls.
+		
+		Furthermore, the biggest advantage of this quantum algorithm is not that \emph{it can process things in parallel}. After all, adding parallelism to the classical algorithm would not make it defeat its quantum counterpart. Instead, the biggest gain comes from the fact that a qbit holds more than just one bit of information, it contains two (at least when using $\mathbb{R}$). That allows the first input of $f'$ to gain knowledge about the second input and carry it out across the circuit without any cost. The way information flows through quantum circuits is key to its power.
+		
+		Applications where quantum algorithms defeat classical algorithms include factoring of natural numbers for cryptography, fourier transforms and search problems. Whether graph isomorphism is one such case where quantum is better, is still unknown.
+		
+		Anyhow, quantum algorithms can currently really be applied to very specific problems and do not represent a general gain of computational power. In particular, quantum computers are equivalent to turing machines as per computational power and it is not believed that they can solve NP-complete problems in polymonial time.
+	\end{section}
+	
+	\bibliographystyle{abbrvnat}
+	\bibliography{bibliography}
+	\nocite{mooremertens2011}
+	\nocite{microsoft2018}
+\end{homeworkProblem}
+
+\end{document}
+

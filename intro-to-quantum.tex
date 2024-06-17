@@ -313,6 +313,21 @@
 			\end{tabular}
 			\caption{Quantum circuit notation of the four basic operations}
 		\end{table}
+	
+		We can compose operations sequentially. For example, we can do $H$ followed by $X$ on a qbit $\ket{x}$. In terms of matrix multiplications, that is $\op{X}(\op{H}\ket{x})$. This circuit looks like
+		\[
+			\Qcircuit @C=1.4em @R=1.2em {
+				\lstick{\ket{x}}	& \gate{H} 	& \gate{X} & \rstick{\op{X}(\op{H}\ket{x})} \qw \\
+			}
+		\]
+		Similarly, we can have two qbits undergoing operations in parallel. For example, consider a two qbit system $\ket{xy} = \ket{x} \otimes \ket{y}$ that undergoes a flip at the first qbit, and identity at the second. This circuit looks like
+		\[
+			\Qcircuit @C=1.4em @R=1.2em {
+				\lstick{\ket{x}}	& \gate{X} 	& \rstick{\op{X}\ket{x}} \qw \\
+				\lstick{\ket{y}}	& \gate{I} 	& \rstick{\ket{y}} \qw \\
+			}
+		\] 
+		which represents the following matrix multiplication $\op{X}\ket{x} \otimes \op{I}\ket{y} = (X \otimes I) \ket{xy}$. Note that $(X \otimes I)$ is the tensor product of the matrices $X$ and $I$.
 	\end{section}
 
 	\begin{section}{Hello World}
@@ -426,7 +441,7 @@
 				
 				\item[$set1$] When $f'$ is $set1$, see Table \ref{tab:fcircuits},
 				\[
-					f'(\ket{--}) = \vc{-\oort}{\oort} \otimes \ket{-} \text{, thus } \psi = \vc{-\oort}{\oort}
+					f'(\ket{--}) = \op{X}\ket{-} \otimes \ket{-} = \op{X}\vc{\oort}{-\oort} \otimes \ket{-} = \vc{-\oort}{\oort} \otimes \ket{-} \text{, thus } \psi = \vc{-\oort}{\oort}
 				\]
 				\[
 					\text{and then }\op{H}\ket{\psi} = \op{H}\ket{\vc{-\oort}{\oort}} = \oper{\oort & \oort}{\oort & -\oort} \vc{-\oort}{\oort} = \vc{0}{-1} \text{ which measures 1}
